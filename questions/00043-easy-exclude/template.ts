@@ -6,3 +6,8 @@ type MyExclude<T, U> = T extends U? never: T
 
 // MyExclude<'a' | 'b' | 'c', 'a'>, 'b' | 'c'>의 경우 분배가 아래와 같이 이루어짐
 // ("a" extends U ? never : "a") | ("b" extends U ? never : "b") | ("c" extends U ? never : "c")
+
+//분배하지 않으려면 extends 키워드의 양 옆을 대괄호로 감싸면 됨
+// MyExclude<T, U> = [T] extends [U]? never: T
+// [ "a" | "b" | "c" ] extends [ "a" ] ? never : T
+// 그대로 "a" | "b" | "c"로 평가됨
