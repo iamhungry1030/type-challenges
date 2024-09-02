@@ -1,1 +1,2 @@
-type MyAwaited<T> = any
+type MyAwaited<T> = T extends Promise<infer U> ? U : never;
+
